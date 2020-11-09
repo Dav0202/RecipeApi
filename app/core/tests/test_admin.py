@@ -6,7 +6,7 @@ class AdminSiteTests(TestCase):
 
     def setUp(self):
         self.client= Client()
-        self.admin_user = get_user_model().objects.create_super_user(
+        self.admin_user = get_user_model().objects.create_superuser(
             email='admin@cc.com',
             password= '123456'
         )
@@ -38,4 +38,5 @@ class AdminSiteTests(TestCase):
         res = self.client.get(url)
 
         self.assertEqual(res.status_code,200)
-
+    
+        
