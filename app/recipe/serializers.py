@@ -1,3 +1,4 @@
+from django.db import models
 from rest_framework import serializers
 from .models  import Tag,Ingredients,Recipe
 
@@ -37,3 +38,11 @@ class RecipeDetailSerializer(RecipeSerializer):
     """Serializer for a recipe""" 
     ingredients = IngredientsSerializer(many=True, read_only=True)
     tag = TagSerializer(many= True, read_only=True) 
+
+class RecipeImageSerializer(serializers.ModelSerializer):
+    """Serializer for uploading image in object"""
+
+    class Meta:
+        model = Recipe
+        fields = ('id','image')
+        read_only_field = (id,)
